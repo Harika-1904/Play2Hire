@@ -1,0 +1,127 @@
+.roadmap-page {
+  background: #030712; /* Deepest outer space blue/black */
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.roadmap-header {
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 1000px;
+  z-index: 5;
+}
+
+.roadmap-header h1 {
+  color: #fff;
+  font-size: 45px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+.roadmap-header p {
+  color: #10b981;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+
+.map-scroll-container {
+  width: 100%;
+  max-width: 1000px;
+  overflow-x: auto;
+  padding: 40px 10px;
+  /* Scrollbar styling for modern browsers */
+  scrollbar-color: #8b5cf6 transparent;
+  scrollbar-width: thin;
+}
+
+.map-container {
+  position: relative;
+  width: 780px;  /* Exact computed width of Hex grid (540 + 240) */
+  height: 520px; /* Exact computed height (312 + 208) */
+  margin: 0 auto;
+  /* Glowing Hexagon Matrix grid background pattern */
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  border-radius: 20px;
+}
+
+/* === HEXAGON MAGIC === */
+.hex-wrapper {
+  position: absolute;
+  width: 240px;
+  height: 208px;
+  cursor: pointer;
+  /* Crucial: filter translates massive neon glows ignoring the invisible clipped corners */
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hex-wrapper:hover {
+  transform: translateY(-15px) scale(1.05);
+  filter: drop-shadow(0 0 35px rgba(236, 72, 153, 0.9));
+  z-index: 10;
+}
+
+.hex-outer {
+  width: 100%;
+  height: 100%;
+  /* Flat-topped hexagon */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hex-wrapper.start .hex-outer, 
+.hex-wrapper.finish .hex-outer {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+}
+
+.hex-wrapper.start:hover, 
+.hex-wrapper.finish:hover {
+  filter: drop-shadow(0 0 35px rgba(245, 158, 11, 0.9));
+}
+
+.hex-inner {
+  width: 95%; /* Creates the 5% neon border visually */
+  height: 94%;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: #111827; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease;
+}
+
+.hex-wrapper:hover .hex-inner {
+  background: #1f2937; /* Glass-lighten effect */
+}
+
+.hex-icon {
+  margin-bottom: 5px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.hex-label {
+  color: #e5e7eb;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
