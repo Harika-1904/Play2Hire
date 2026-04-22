@@ -55,7 +55,7 @@ Play2Hire/
 
 Step 1: Clone Repository
 
-git clone https://github.com/Hark- 1904/Play2Hire.git  
+git clone https://github.com/Harika- 1904/Play2Hire.git  
 cd play2hire  
 
 Step 2: Install Dependencies
